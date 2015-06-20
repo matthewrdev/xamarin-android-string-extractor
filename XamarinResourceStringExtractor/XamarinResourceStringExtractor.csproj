@@ -41,7 +41,9 @@
   <Import Project="..\packages\MonoDevelop.Addins.0.2.3\build\net40\MonoDevelop.Addins.targets" Condition="Exists('..\packages\MonoDevelop.Addins.0.2.3\build\net40\MonoDevelop.Addins.targets')" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Readme.txt" />
+    <None Include="..\addin-project.xml">
+      <Link>addin-project.xml</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
@@ -49,7 +51,6 @@
   <ItemGroup>
     <AddinReference Include="MonoDevelop.Xamarin.Ide" />
     <AddinReference Include="MonoDevelop.Refactoring" />
-    <AddinReference Include="MonoDevelop.Xml" />
     <AddinReference Include="MonoDevelop.MonoAndroid" />
     <AddinReference Include="MonoDevelop.CBinding" />
     <AddinReference Include="MonoDevelop.CSharpBinding" />
@@ -59,7 +60,6 @@
     <AddinReference Include="MonoDevelop.DocFood" />
     <AddinReference Include="MonoDevelop.FSharpBinding" />
     <AddinReference Include="Xamarin.Forms.Addin" />
-    <AddinReference Include="MonoDevelop.VersionControl.Git" />
     <AddinReference Include="MonoDevelop.GtkCore" />
     <AddinReference Include="MonoDevelop.ILAsmBinding" />
     <AddinReference Include="MonoDevelop.Debugger.Soft" />
@@ -72,11 +72,8 @@
     <AddinReference Include="MonoDevelop.WebReferences" />
     <AddinReference Include="MonoDevelop.RegexToolkit" />
     <AddinReference Include="MonoDevelop.VersionControl.Subversion" />
-    <AddinReference Include="MonoDevelop.VersionControl.Subversion.Unix" />
     <AddinReference Include="MonoDevelop.TextTemplating" />
-    <AddinReference Include="MonoDevelop.VBBinding" />
     <AddinReference Include="MonoDevelop.VersionControl" />
-    <AddinReference Include="MonoDevelop.DesignerSupport" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Manifest.addin.xml" />

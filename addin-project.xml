@@ -1,0 +1,7 @@
+<AddinProject appVersion="5.0">
+    <Project platforms="Win32 Mac">
+        <AddinFile>XamarinResourceStringExtractor/bin/Release/XamarinResourceStringExtractor.dll</AddinFile>
+        <BuildFile>XamarinResourceStringExtractor.sln</BuildFile>
+        <BuildConfiguration>Release</BuildConfiguration>
+    </Project>
+</AddinProject>
