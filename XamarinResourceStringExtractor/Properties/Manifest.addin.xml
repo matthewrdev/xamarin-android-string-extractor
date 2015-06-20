@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel>
+    <Extension path = "/MonoDevelop/Refactoring/Refactorings">
+        <Class id="ExtractStringToResource" class = "XamarinResourceStringExtractor.ExtractStringToResource" />
+    </Extension>
+</ExtensionModel>
