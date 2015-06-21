@@ -5,7 +5,7 @@ using Mono.Addins.Description;
 [assembly:Addin (
 	"Xamarin.Android Resource String Extractor", 
 	Namespace = "XamarinResourceStringExtractor",
-	Version = "0.0.1"
+	Version = "0.0.2"
 )]
 
 [assembly:AddinName ("Xamarin.Android Resource String Extractor")]
