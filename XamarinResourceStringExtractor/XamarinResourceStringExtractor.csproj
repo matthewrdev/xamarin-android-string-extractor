@@ -52,28 +52,9 @@
     <AddinReference Include="MonoDevelop.Xamarin.Ide" />
     <AddinReference Include="MonoDevelop.Refactoring" />
     <AddinReference Include="MonoDevelop.MonoAndroid" />
-    <AddinReference Include="MonoDevelop.CBinding" />
     <AddinReference Include="MonoDevelop.CSharpBinding" />
-    <AddinReference Include="MonoDevelop.Debugger" />
-    <AddinReference Include="MonoDevelop.Deployment" />
-    <AddinReference Include="MonoDevelop.Deployment.Linux" />
-    <AddinReference Include="MonoDevelop.DocFood" />
-    <AddinReference Include="MonoDevelop.FSharpBinding" />
-    <AddinReference Include="Xamarin.Forms.Addin" />
     <AddinReference Include="MonoDevelop.GtkCore" />
-    <AddinReference Include="MonoDevelop.ILAsmBinding" />
-    <AddinReference Include="MonoDevelop.Debugger.Soft" />
-    <AddinReference Include="MonoDevelop.Debugger.Soft.AspNet" />
-    <AddinReference Include="MonoDevelop.AssemblyBrowser" />
-    <AddinReference Include="MonoDevelop.HexEditor" />
-    <AddinReference Include="MonoDevelop.MacPlatform" />
     <AddinReference Include="MonoDevelop.SourceEditor2" />
-    <AddinReference Include="MonoDevelop.PackageManagement" />
-    <AddinReference Include="MonoDevelop.WebReferences" />
-    <AddinReference Include="MonoDevelop.RegexToolkit" />
-    <AddinReference Include="MonoDevelop.VersionControl.Subversion" />
-    <AddinReference Include="MonoDevelop.TextTemplating" />
-    <AddinReference Include="MonoDevelop.VersionControl" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Manifest.addin.xml" />
