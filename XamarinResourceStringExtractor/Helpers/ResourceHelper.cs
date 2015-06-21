@@ -1,9 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using ICSharpCode.NRefactory.Semantics;
 using MonoDevelop.MonoDroid;
-using System.Linq;
 
 namespace XamarinResourceStringExtractor
 {
@@ -79,7 +79,7 @@ namespace XamarinResourceStringExtractor
 		Unknown,
 	}
 
-	public class ResourceHelper
+	public static class ResourceHelper
 	{
 		public static ResourceCategory MapToResourceCategory(string resourceCategory)
 		{

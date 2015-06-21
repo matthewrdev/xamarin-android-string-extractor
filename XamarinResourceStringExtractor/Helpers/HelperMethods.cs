@@ -25,28 +25,18 @@
 // THE SOFTWARE.
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Collections;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Text;
-using MonoDevelop.Core;
-using MonoDevelop.Projects;
-using MonoDevelop.Ide.Gui;
-using MonoDevelop.Ide.Gui.Content;
-using MonoDevelop.Ide.CodeTemplates;
-using MonoDevelop.Ide.CodeCompletion;
-using MonoDevelop.Refactoring;
-using MonoDevelop.CSharp.Parser;
-using Mono.TextEditor;
-using ICSharpCode.NRefactory.CSharp;
-using ICSharpCode.NRefactory.TypeSystem;
+using System.IO;
 using ICSharpCode.NRefactory.Completion;
-using ICSharpCode.NRefactory.Semantics;
-using ICSharpCode.NRefactory.CSharp.TypeSystem;
+using ICSharpCode.NRefactory.CSharp;
 using ICSharpCode.NRefactory.CSharp.Resolver;
+using ICSharpCode.NRefactory.CSharp.TypeSystem;
+using ICSharpCode.NRefactory.Semantics;
+using ICSharpCode.NRefactory.TypeSystem;
+using Mono.TextEditor;
+using MonoDevelop.Ide.CodeCompletion;
+using MonoDevelop.Ide.Gui;
+using MonoDevelop.Projects;
 
 namespace XamarinResourceStringExtractor
 {
@@ -65,33 +55,14 @@ namespace XamarinResourceStringExtractor
 			}
 		}
 
-		public static ICSharpCode.NRefactory.CSharp.SyntaxTree Parse (this ICSharpCode.NRefactory.CSharp.CSharpParser parser, TextEditorData data)
+		public static SyntaxTree Parse (this CSharpParser parser, TextEditorData data)
 		{
 			using (var stream = data.OpenStream ()) {
 				return parser.Parse (stream, data.Document.FileName);
 			}
 		}
 
-//		public static AstNode ParseSnippet (this ICSharpCode.NRefactory.CSharp.CSharpParser parser, TextEditorData data)
-//		{
-//			using (var stream = new  StreamReader (data.OpenStream ())) {
-//				var result = parser.ParseExpression (stream);
-//				if (!parser.HasErrors)
-//					return result;
-//			}
-//			parser.ErrorPrinter.Reset ();
-//			using (var stream = new  StreamReader (data.OpenStream ())) {
-//				var result = parser.ParseStatements (stream);
-//				if (!parser.HasErrors)
-//					return result.FirstOrDefault ();
-//			}
-//			parser.ErrorPrinter.Reset ();
-//			using (var stream = data.OpenStream ()) {
-//				return parser.Parse (stream, data.Document.FileName);
-//			}
-//		}
-
-		internal static MonoDevelop.CSharp.Formatting.CSharpFormattingPolicy GetFormattingPolicy (this MonoDevelop.Ide.Gui.Document doc)
+		internal static MonoDevelop.CSharp.Formatting.CSharpFormattingPolicy GetFormattingPolicy (this Document doc)
 		{
 			var policyParent = doc.Project != null ? doc.Project.Policies : null;
 			var types = MonoDevelop.Ide.DesktopService.GetMimeTypeInheritanceChain (MimeType);
@@ -99,12 +70,12 @@ namespace XamarinResourceStringExtractor
 			return codePolicy;
 		}
 
-		public static CSharpFormattingOptions GetFormattingOptions (this MonoDevelop.Ide.Gui.Document doc)
+		public static CSharpFormattingOptions GetFormattingOptions (this Document doc)
 		{
 			return GetFormattingPolicy (doc).CreateOptions ();
 		}
 
-		public static CSharpFormattingOptions GetFormattingOptions (this MonoDevelop.Projects.Project project)
+		public static CSharpFormattingOptions GetFormattingOptions (this Project project)
 		{
 			var types = MonoDevelop.Ide.DesktopService.GetMimeTypeInheritanceChain (MimeType);
 			var codePolicy = project != null ? project.Policies.Get<MonoDevelop.CSharp.Formatting.CSharpFormattingPolicy> (types) :

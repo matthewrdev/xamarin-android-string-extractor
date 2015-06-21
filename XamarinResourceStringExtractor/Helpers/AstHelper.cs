@@ -1,21 +1,17 @@
 ﻿using System;
+using System.Linq;
 using ICSharpCode.NRefactory.CSharp;
 using ICSharpCode.NRefactory.CSharp.Resolver;
-using ICSharpCode.NRefactory.TypeSystem;
-using MonoDevelop.Ide;
 using ICSharpCode.NRefactory.CSharp.TypeSystem;
-using System.Linq;
+using ICSharpCode.NRefactory.TypeSystem;
 using ICSharpCode.NRefactory.TypeSystem.Implementation;
+using MonoDevelop.Ide;
 
 namespace XamarinResourceStringExtractor
 {
 	
-	public class AstHelper
+	public static class AstHelper
 	{
-		public AstHelper ()
-		{
-		}
-
 		public static AstNode ResolveNodeEncapsulatingClass(AstNode node)
 		{
 			var parent = node.Parent;
@@ -26,7 +22,7 @@ namespace XamarinResourceStringExtractor
 				parent = parent.Parent;
 			}
 
-			return parent as TypeDeclaration;
+			return parent;
 		}
 
 		public static bool IsClassDerivedFrom(TypeDeclaration typeToCheck, string[] supportedBaseTypes)
@@ -43,22 +39,15 @@ namespace XamarinResourceStringExtractor
 			if (parsedFile == null)
 				return false;
 			
-			bool isDerivedFrom = false;
-
-
 			foreach (var baseType in typeToCheck.BaseTypes) {
 				var t = baseType as SimpleType;
-
 
 				AstNode astNode;
 				var resolve = ResolveAtLocation.Resolve(new Lazy<ICompilation>(() => doc.Compilation), parsedFile, ast, t.StartLocation, out astNode);
 
 				if (t != null && supportedBaseTypes.Contains(t.Identifier)) {
-					isDerivedFrom = true;
-					break;
+					return true;
 				}
-
-
 
 				// Lets resolve the parent classes.
 				var baseTypes = resolve.Type.GetAllBaseTypes();
@@ -66,14 +55,13 @@ namespace XamarinResourceStringExtractor
 				{
 					DefaultResolvedTypeDefinition resolvedType = bt as DefaultResolvedTypeDefinition;
 					if (resolvedType != null && supportedBaseTypes.Contains(resolvedType.FullName)) {
-						isDerivedFrom = true;
-						break;
+						return true;
 					}
 				}
 
 			}
 
-			return isDerivedFrom;
+			return false;
 		}
 	}
 }
