@@ -18,7 +18,13 @@ namespace XamarinResourceStringExtractor
 {
 	public class ExtractStringToResource : RenameRefactoring
 	{
-		public readonly string[] SupportedResolvers = { "Android.App.Activity", "Android.App.Fragment" };
+    public readonly string[] SupportedResolvers = { 
+      "Android.App.Activity",
+      "Android.Support.V7.App.AppCompatActivity",
+      "Android.App.Fragment", 
+      "Android.Support.V4.App.Fragment",
+      "Android.Views.View"
+    };
 
 		const string NEW_STRINGS_FILE_TEMPLATE = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n{0}\n</resources>\n";
 		const string NEW_STING_INNER_CONTENT_TEMPLATE = "\t<string name=\"{0}\">{1}</string>\n";
