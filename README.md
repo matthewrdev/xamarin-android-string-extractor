@@ -1,6 +1,6 @@
 # Xamarin.Android - String Extractor
 
-**This tool is now deprecated.**
+**This tool is now deprecated and has been replaced by MFractor.**
 
 **To continue use, add http://addins.mfractor.com into the Addin Manager and install MFractor**
 
